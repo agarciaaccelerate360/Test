@@ -5,12 +5,24 @@
 		"typeProperties": {
 			"sources": [
 				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
 					"name": "OFSMAGToteSource"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> OFSMAGToteSource"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> OFSMAGToteSource\nOFSMAGToteSource sink(input(\n\t\tLicensePlate as string,\n\t\tTypeID as integer,\n\t\tWeight as float,\n\t\tUpdatedFlag as integer,\n\t\tCREATED_DATE as timestamp,\n\t\tLAST_RECEIVED_DATE as timestamp,\n\t\tLAST_UPDATED_BY as string,\n\t\tLAST_UPDATED_DATE as timestamp,\n\t\tSERVER_NAME as string,\n\t\tZIP_FILE_TIMESTAMP as timestamp,\n\t\tPICKLINE_LOCATION as string,\n\t\tFILE_ID as long\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1"
 		}
 	}
 }

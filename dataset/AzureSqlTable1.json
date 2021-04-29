@@ -1,0 +1,77 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LicensePlate",
+				"type": "varchar"
+			},
+			{
+				"name": "TypeID",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "Weight",
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "UpdatedFlag",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "CREATED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_RECEIVED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_UPDATED_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SERVER_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "ZIP_FILE_TIMESTAMP",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PICKLINE_LOCATION",
+				"type": "varchar"
+			},
+			{
+				"name": "FILE_ID",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "PerfectPICOFS_dbo_Tote"
+		}
+	}
+}
